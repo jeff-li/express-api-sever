@@ -11,6 +11,18 @@ router.use(function timeLog (req, res, next) {
     next()
 })
 
+/**
+ * @swagger
+ *
+ * /admin/users:
+ *   get:
+ *     description: Get all users from the database
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: login
+ */
 router.get('/users', userCtrl.getAllUsers)
 router.get('/users/:userId', userCtrl.getUserbyId)
 
