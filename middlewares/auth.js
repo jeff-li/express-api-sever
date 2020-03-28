@@ -4,7 +4,10 @@ const authMiddleware = {
 
     hasToken: (req, res, next) => {
         logger.info('checking auth status')
-        return true;
+
+        //  Add your own logic here
+
+        next()
     }
 
 };

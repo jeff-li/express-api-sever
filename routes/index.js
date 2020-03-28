@@ -1,43 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const logger = require('../logger');
 
+const publicRouter = require('./public')
 const adminRouter = require('./admin')
-// const auth = require('../middlewares/auth')
-
-// Authentication Middleware
-// router.use(auth.hasToken)
-
-
-// Routes
-router.get('/', function(req, res, next) {
-  res.status(200).send('respond with a resource');
-});
-
-router.use('/admin', adminRouter);
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+const auth = require('../middlewares/auth')
 
 
 // Swagger set up
 const options = {
-  definition: {
-    openapi: '3.0.0', // Specification (optional, defaults to swagger: '2.0')
-    info: {
-      title: 'Hello World', // Title (required)
-      version: '1.0.0', // Version (required)
-    },
-  },
-  // Path to the API docs
-  apis: ['./routes/*.js'],
-};
-
-// Initialize swagger-jsdoc -> returns validated swagger spec in json format
-const swaggerSpec = swaggerJsdoc(options);
-router.use('/api-docs', swaggerUi.serve);
-router.get('/api-docs', swaggerUi.setup(swaggerSpec, {
   explorer: true
-}));
+};
+router.use('/api-docs', swaggerUi.serve);
+router.get('/api-docs', swaggerUi.setup(swaggerDocument, options));
+
+// Routes
+// Public
+router.use('/', publicRouter)
+
+// Authentication Middleware
+router.use(auth.hasToken)
+router.use('/admin', adminRouter);
 
 // Error Handler
 router.use((err, req, res, next) => {
