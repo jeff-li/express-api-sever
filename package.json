@@ -5,8 +5,9 @@
   "scripts": {
     "start": "npm run migrate && ./bin/www",
     "dev": "nodemon ./bin/www",
-    "test": "nyc --reporter text mocha --recursive --exit",
-    "test-watch": "mocha -w --exit",
+    "test": "env NODE_ENV=test nyc --reporter text mocha --recursive --check-leaks --exit",
+    "test-watch": "env NODE_ENV=test mocha -w --exit",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov",
     "migrate": "sequelize db:migrate && sequelize db:seed:all"
   },
   "dependencies": {

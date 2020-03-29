@@ -3,7 +3,6 @@ orbs:
   codecov: codecov/codecov@1.0.5
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
-    working_directory: ~/mern-starter # directory where steps will run
     docker: # run the steps with Docker
       - image: circleci/node:13
     steps: # a collection of executable commands
@@ -26,17 +25,18 @@ jobs: # a collection of steps
           command: npm test
       - run: # run coverage report
           name: code-coverage
-          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+          command: npm run report-coverage
+      - store_test_results:
+          path: test-results
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: test-results.xml
-          prefix: tests
+          path: coverage.lcov
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: coverage
-          prefix: coverage
+          path: coverage.lcov
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: test-results.xml
+          path: coverage.lcov
       - codecov/upload:
+          file: coverage.lcov
           flags: unittest
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examplesversion: 2.1
 
