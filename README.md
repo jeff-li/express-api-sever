@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/jeff-li/express-booster.svg?style=svg)](https://circleci.com/gh/jeff-li/express-booster)
+
 # express-booster
 An opinonated starter pack for expressjs projects
 
