@@ -1,7 +1,7 @@
-[![CircleCI](https://circleci.com/gh/jeff-li/express-booster.svg?style=svg)](https://circleci.com/gh/jeff-li/express-booster)
-[![codecov](https://codecov.io/gh/jeff-li/express-booster/branch/master/graph/badge.svg)](https://codecov.io/gh/jeff-li/express-booster)
+[![CircleCI](https://circleci.com/gh/jeff-li/express-api-starter-pack.svg?style=svg)](https://circleci.com/gh/jeff-li/express-api-starter-pack)
+[![codecov](https://codecov.io/gh/jeff-li/express-api-starter-pack/branch/master/graph/badge.svg)](https://codecov.io/gh/jeff-li/express-api-starter-pack)
 
-# express-booster
+# express-api-starter-pack
 An opinonated starter pack for expressjs projects
 
 - Connected to CircleCI for continuous integration. Tests results and artifacts stored after each build
