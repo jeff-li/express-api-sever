@@ -1,25 +1,29 @@
 require('dotenv').config();
 
+const logger = require('../logger');
+
+const { DB_HOST, DB_USER, DB_PASS, DB_DATABASE } = process.env;
+
+// Pull information from the process specific env files
+
+logger.info(`DATABASE HOST: ${DB_HOST}`);
+
+const masterConfig = {
+  url: `postgres://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_DATABASE}`,
+  dialect: 'postgres',
+  // disable logging; default: console.log
+  logging: false,
+  pool: {
+    max: 20,
+    min: 0,
+    idle: 10000,
+  },
+  seederStorage: 'sequelize',
+};
+
 module.exports = {
-  "development": {
-      "username": process.env.DB_USER,
-      "password": process.env.DB_PASS,
-      "database": process.env.DB_DATABASE,
-      "host": process.env.DB_HOST,
-      "dialect": "postgres"
-  },
-  "test": {
-      "username": "root",
-      "password": null,
-      "database": "database_test",
-      "host": "127.0.0.1",
-      "dialect": "postgres"
-  },
-  "production": {
-      "username": "root",
-      "password": null,
-      "database": "database_production",
-      "host": "127.0.0.1",
-      "dialect": "postgres"
-  }
+  test: masterConfig,
+  development: masterConfig,
+  staging: masterConfig,
+  production: masterConfig,
 };
