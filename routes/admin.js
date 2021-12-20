@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const logger = require('../logger');
 
-const customerCtrl = require('../controllers/customersCtrl')
+const customerCtrl = require('../controllers/customerCtrl')
 
 
 // middleware that is specific to this router

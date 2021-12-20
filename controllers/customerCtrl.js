@@ -14,7 +14,6 @@ const controller = {
 
     getCustomerById: async (req, res) => {
       const result = await Customer.findByPk(req.params.customerId)
-      logger.info(result.toJSON())
       return res.status(200).json(result)
     }
 }
