@@ -1,7 +1,7 @@
-FROM node:12.14.1-alpine
+FROM node:16-bullseye
 WORKDIR /var/www/app
 COPY package.json package-lock.json /var/www/
-RUN npm install sequelize-cli -g --quiet && npm install --quiet
+RUN npm install --quiet
 COPY . /var/www/app
-EXPOSE 80
+EXPOSE 3000
 CMD ["npm", "start"]

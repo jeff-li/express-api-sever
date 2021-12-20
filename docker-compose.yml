@@ -1,8 +1,24 @@
-node:
-  build: ./
-  command: npm run dev
-  env_file: .env
-  volumes:
-    - ./:/var/www/
-  ports:
-    - "80:80"
+version: "3.8"
+
+services:
+  database:
+    container_name: database
+    image: "postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=test_user
+      - POSTGRES_PASSWORD=your_password_here
+  app:
+    container_name: server
+    build: ./
+    depends_on:
+      - database
+    env_file: .env
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/app
+      - /var/www/app/node_modules
