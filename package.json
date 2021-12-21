@@ -17,7 +17,8 @@
     "test-watch": "env NODE_ENV=test mocha -w --exit",
     "report-coverage": "nyc report --reporter=lcov --reporter=text",
     "migrate": "sequelize db:migrate && sequelize db:seed:all",
-    "lint": "eslint . --ext .js --color"
+    "lint": "eslint . --ext .js --color",
+    "format": "prettier --write \"{,!(node_modules)/**/}*.{js,ts}\""
   },
   "dependencies": {
     "body-parser": "^1.19.1",

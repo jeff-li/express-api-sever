@@ -1,15 +1,13 @@
 const logger = require('../logger');
 
 const authMiddleware = {
+  hasToken: (req, res, next) => {
+    logger.info('checking auth status');
 
-    hasToken: (req, res, next) => {
-        logger.info('checking auth status')
+    //  Add your own logic here
 
-        //  Add your own logic here
-
-        next()
-    }
-
+    next();
+  },
 };
 
 module.exports = authMiddleware;

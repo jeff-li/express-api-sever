@@ -77,3 +77,7 @@ Run Sequelize migration and seed scripts<br />
 ### `npm run lint`
 
 Run Eslint linter on all .js files<br />
+### `npm run format`
+
+Format all .js files with Prettier<br />
+

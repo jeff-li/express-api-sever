@@ -13,8 +13,8 @@ module.exports = {
     status() {
       return this;
     },
-    send: () => { },
-    json: () => { },
+    send: () => {},
+    json: () => {},
   },
   sinon,
   sandbox,
