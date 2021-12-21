@@ -6,6 +6,7 @@ const Customer = db.Customer;
 const controller = {
 
     getAllCustomers: async (req, res) => {
+      logger.info('Getting all customers.')
       const result = await Customer.findAll({
         attributes: ['id', 'firstName', 'lastName', 'email']
       })

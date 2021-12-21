@@ -2,13 +2,22 @@
   "name": "express-api-starter-pack",
   "version": "1.0.0",
   "private": true,
+  "keywords": [
+    "nodejs",
+    "express",
+    "rest",
+    "api",
+    "sequelize",
+    "postgres"
+  ],
   "scripts": {
     "start": "npm run migrate && ./bin/www",
-    "dev": "nodemon ./bin/www",
+    "dev": "npm run migrate && nodemon ./bin/www",
     "test": "env NODE_ENV=test nyc --reporter text mocha --recursive --check-leaks --exit",
     "test-watch": "env NODE_ENV=test mocha -w --exit",
     "report-coverage": "nyc report --reporter=lcov --reporter=text",
-    "migrate": "sequelize db:migrate && sequelize db:seed:all"
+    "migrate": "sequelize db:migrate && sequelize db:seed:all",
+    "lint": "eslint . --ext .js --color"
   },
   "dependencies": {
     "body-parser": "^1.19.1",
@@ -28,13 +37,15 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "swagger-ui-express": "^4.3.0",
     "chai": "^4.3.4",
     "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
     "mocha": "^9.1.3",
     "nodemon": "^2.0.15",
     "nyc": "^15.1.0",
+    "prettier": "2.5.1",
     "sinon": "^12.0.1",
-    "sinon-chai": "^3.7.0"
+    "sinon-chai": "^3.7.0",
+    "swagger-ui-express": "^4.3.0"
   }
 }

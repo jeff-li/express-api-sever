@@ -11,6 +11,8 @@ const auth = require('../middlewares/auth')
 
 
 // Swagger set up
+// By default the Swagger Explorer bar is hidden, to display it pass true 
+// as the 'explorer' property of the options to the setup function
 const options = {
   explorer: true
 };
