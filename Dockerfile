@@ -1,4 +1,4 @@
-FROM node:16-bullseye
+FROM node:18-bookworm
 WORKDIR /var/www/app
 COPY package.json package-lock.json /var/www/
 RUN npm install --quiet
